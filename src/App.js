@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import { Route, Routes,Link } from 'react-router-dom';
+import CreateUserComponent from './Components/CreateUserComponent';
+import LoginUserComponent from './Components/LoginUserComponent';
+
+let App =()=> {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-container">
+     <nav>
+      <ul className='navbar'>
+       <li><Link to= "/">Index</Link></li>
+       <li><Link to= "/register">Register</Link></li>
+       <li><Link to= "/login">Login</Link></li>
+      </ul>
+     </nav>
+     <Routes>
+      <Route path="/register" element={
+      <CreateUserComponent/>
+      }/>
+       <Route path="/login" element={
+        <LoginUserComponent/>
+      
+      }/>
+       <Route path="/" element={
+      <p>Index of website {localStorage.getItem("apikey")}</p>}/>
+     </Routes>
     </div>
   );
 }
